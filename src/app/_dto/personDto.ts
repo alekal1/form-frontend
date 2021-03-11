@@ -1,6 +1,6 @@
 import {CategoryDto} from './categoryDto';
 
-export interface PersonDto {
+export class PersonDto {
 
   id: number;
   firstName: string;

@@ -1,1 +1,38 @@
-<p>form works!</p>
+<div class="form-container">
+  <form class="main-form" [formGroup]="form">
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input formControlName="name" matInput>
+      <mat-error>Name should contain only letters</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Category</mat-label>
+      <mat-select multiple
+                  [(ngModel)]="selected"
+                  [ngModelOptions]="{standalone: true}">
+        <mat-option
+          [value]="category.categoryName"
+          *ngFor="let category of categories">{{category.categoryName}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input formControlName="email" matInput>
+      <mat-error>Email is not valid</mat-error>
+    </mat-form-field>
+    <mat-form-field hintLabel="Max 256 characters" appearance="fill">
+      <mat-label>Comment</mat-label>
+      <textarea #textArea maxlength="256" formControlName="comment" matInput></textarea>
+      <mat-hint align="end">{{textArea.value?.length || 0}}/256</mat-hint>
+    </mat-form-field>
+
+    <button class="submit-btn" mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="!form.valid || !selected" (click)="buttonClick()">Add</button>
+  </form>
+</div>
+<!--Name-->
+<!--Email-->
+<!--Text-->
+<!--Input-->

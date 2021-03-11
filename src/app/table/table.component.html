@@ -28,6 +28,11 @@
     <td mat-cell *matCellDef="let person">{{getCategoryName(person.categories)}}</td>
   </ng-container>
 
+  <ng-container matColumnDef="comment">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Comment</th>
+    <td mat-cell *matCellDef="let person">{{person.text}}</td>
+  </ng-container>
+
   <ng-container matColumnDef="postedDate">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Posted</th>
     <td mat-cell *matCellDef="let person">{{person.postedDate}}</td>

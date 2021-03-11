@@ -21,6 +21,7 @@ export class TableComponent implements OnInit, AfterViewInit {
     'lastName',
     'email',
     'categories',
+    'comment',
     'postedDate'
   ];
 
