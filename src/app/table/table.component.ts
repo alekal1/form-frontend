@@ -1,9 +1,8 @@
 import { Component, OnInit, AfterViewInit, ViewChild} from '@angular/core';
 import {PersonService} from '../_service/person.service';
-import {MatTable, MatTableDataSource} from '@angular/material/table';
-import {CategoryDto} from '../_dto/categoryDto';
+import {MatTableDataSource} from '@angular/material/table';
 import {PersonDto} from '../_dto/personDto';
-import {MatSort} from '@angular/material/sort';
+import {MatPaginator} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-table',
@@ -16,25 +15,28 @@ export class TableComponent implements OnInit, AfterViewInit {
   persons = new MatTableDataSource<PersonDto>();
 
   columnsToDisplay: string[] = [
-    'id',
-    'firstName',
-    'lastName',
-    'email',
-    'categories',
-    'comment',
-    'postedDate'
+    'Id',
+    'Name',
+    'Email',
+    'Categories',
+    'Comment',
+    'PostedDate'
   ];
 
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit(): void {
     this.getPersons();
   }
 
   ngAfterViewInit(): void {
-    this.persons.sort = this.sort;
+    this.persons.paginator = this.paginator;
   }
 
+  /**
+   * Save all persons from API into array.
+   *
+   */
   getPersons(): void {
     this.personService.getPersons().subscribe(
       res => {
@@ -43,12 +45,28 @@ export class TableComponent implements OnInit, AfterViewInit {
       error => console.log(error)
     );
   }
-  getCategoryName(c: CategoryDto[]): string {
+
+  /**
+   * Helper method to extract person's categories
+   *
+   */
+  getCategoryName(c: string): string {
     let result = '';
-    c.forEach(cat => {
-      result = result.concat(cat.categoryName + '; ');
+
+    c.split(',').forEach(cat => {
+      result = result.concat(cat + '; ');
     });
     return result;
   }
 
+  /**
+   * Method to combine two string into one
+   *
+   * @param first - First name
+   * @param last - Last name
+   */
+  // tslint:disable-next-line:typedef
+  getFullName(first: string, last: string) {
+    return first.concat(' ').concat(last);
+  }
 }

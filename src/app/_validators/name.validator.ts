@@ -1,5 +1,9 @@
 import {AbstractControl, ValidatorFn} from '@angular/forms';
 
+/**
+ * Validator for name.
+ *
+ */
 export function nameValidator(): ValidatorFn {
   return (control: AbstractControl): {[key: string]: boolean} | null => {
     if (verifyOnlyLetters(control.value)) {
@@ -10,6 +14,12 @@ export function nameValidator(): ValidatorFn {
   };
 }
 
+/**
+ * Method for checking name validity.
+ * Means name should contains only letters
+ *
+ * @param value - name from form
+ */
 // tslint:disable-next-line:typedef
 function verifyOnlyLetters(value) {
   const regOnlyLetters = /^[^ ][a-zA-Z\s]*$/;

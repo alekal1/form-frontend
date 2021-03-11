@@ -1,40 +1,35 @@
-<table mat-table [dataSource]="persons" matSort class="mat-elevation-z8">
+<table mat-table [dataSource]="persons" class="mat-elevation-z8">
 
   <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
   <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
 
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+  <ng-container matColumnDef="Id">
+    <th mat-header-cell *matHeaderCellDef>Id</th>
     <td mat-cell *matCellDef="let person; ">{{person.id}}</td>
   </ng-container>
 
-  <ng-container matColumnDef="firstName">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>First name</th>
-    <td mat-cell *matCellDef="let person">{{person.firstName}}</td>
+  <ng-container matColumnDef="Name">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let person">{{getFullName(person.firstName, person.lastName)}}</td>
   </ng-container>
 
-  <ng-container matColumnDef="lastName">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>Last name</th>
-    <td mat-cell *matCellDef="let person">{{person.lastName}}</td>
-  </ng-container>
-
-  <ng-container matColumnDef="email">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+  <ng-container matColumnDef="Email">
+    <th mat-header-cell *matHeaderCellDef>Email</th>
     <td mat-cell *matCellDef="let person">{{person.email}}</td>
   </ng-container>
 
-  <ng-container matColumnDef="categories">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>Categories</th>
+  <ng-container matColumnDef="Categories">
+    <th mat-header-cell *matHeaderCellDef>Categories</th>
     <td mat-cell *matCellDef="let person">{{getCategoryName(person.categories)}}</td>
   </ng-container>
 
-  <ng-container matColumnDef="comment">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>Comment</th>
+  <ng-container matColumnDef="Comment">
+    <th mat-header-cell *matHeaderCellDef>Comment</th>
     <td mat-cell *matCellDef="let person">{{person.text}}</td>
   </ng-container>
 
-  <ng-container matColumnDef="postedDate">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>Posted</th>
+  <ng-container matColumnDef="PostedDate">
+    <th mat-header-cell *matHeaderCellDef>Posted</th>
     <td mat-cell *matCellDef="let person">{{person.postedDate}}</td>
   </ng-container>
 </table>

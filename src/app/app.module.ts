@@ -15,6 +15,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatInputModule,
     ReactiveFormsModule,
     FormsModule,
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
