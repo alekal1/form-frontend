@@ -11,8 +11,6 @@ Back-end repository could be founded [here](https://github.com/alekal1/form-back
 
 ## Installation
 
-**Before installation make sure, that [PostgreSQL](https://www.postgresql.org/download/) is installed on your machine**
-
 1. Clone this repository with your favorite IDE
 2. Open project and paste in terminal `npm i`
 3. Run in terminal `ng serve` for a dev server
